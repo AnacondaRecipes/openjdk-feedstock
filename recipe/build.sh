@@ -1,11 +1,16 @@
 #!/bin/bash -euo
 
-if [[ $(uname) == Darwin ]]; then
-  pushd Contents/Home
+set -x
+
+find .
+
+if [[ ${target_platform} == osx-64 ]]; then
+  pushd jdk/Contents/Home
+else
+  pushd jdk
 fi
 
 chmod +x bin/*
-chmod +x jre/bin/*
 [[ -d "${PREFIX}"/bin ]] || mkdir "${PREFIX}"/bin
 [[ -d "${PREFIX}"/lib ]] || mkdir "${PREFIX}"/lib
 [[ -d "${PREFIX}"/include ]] || mkdir "${PREFIX}"/include
@@ -20,15 +25,15 @@ else
   _libarch=i386
 fi
 
-if [[ $(uname) == Linux ]]; then
-    mv lib/${_libarch}/jli/*.so lib
-    mv lib/${_libarch}/*.so lib
-    rm -r lib/${_libarch}
-    # libnio.so does not find this within jre/lib/amd64 subdirectory
-    cp jre/lib/${_libarch}/libnet.so lib
+if [[ ${target_platform} =~ linux.* ]]; then
+  mv lib/${_libarch}/jli/*.so lib
+  mv lib/${_libarch}/*.so lib
+  rm -r lib/${_libarch}
+  # libnio.so does not find this within jre/lib/amd64 subdirectory
+  cp jre/lib/${_libarch}/libnet.so lib
 
-    # include dejavu fonts to allow java to work even on minimal cloud images where these fonts are missing
-    # (thanks to @chapmanb)
+  # include dejavu fonts to allow java to work even on minimal cloud images where these fonts are missing
+  # (thanks to @chapmanb)
   pushd jre/lib/fonts
     mv ttf/* ../
     rm -rf ttf
@@ -50,6 +55,4 @@ mkdir -p "${PREFIX}"/etc/conda/deactivate.d
 cp "${RECIPE_DIR}"/scripts/activate.sh "${PREFIX}"/etc/conda/activate.d/java_home.sh
 cp "${RECIPE_DIR}"/scripts/deactivate.sh "${PREFIX}"/etc/conda/deactivate.d/java_home.sh
 
-if [[ $(uname) == Darwin ]]; then
-  popd
-fi
+popd
