@@ -1,57 +1,50 @@
 #!/bin/bash -euo
 
-find .
-
 if [[ $(uname) == Darwin ]]; then
   pushd Contents/Home
 fi
 
 chmod +x bin/*
-chmod +x jre/bin/*
 [[ -d "${PREFIX}"/bin ]] || mkdir "${PREFIX}"/bin
 [[ -d "${PREFIX}"/lib ]] || mkdir "${PREFIX}"/lib
 [[ -d "${PREFIX}"/include ]] || mkdir "${PREFIX}"/include
 
-if [[ -e jre/lib/jspawnhelper ]]; then
-    chmod +x jre/lib/jspawnhelper
+mv bin/* $PREFIX/bin
+mv include/* $PREFIX/include
+mv lib/* $PREFIX/lib
+
+if [ -e lib/jspawnhelper ]; then
+    chmod +x lib/jspawnhelper
 fi
 
-if [[ ${ARCH} == 64 ]]; then
-  _libarch=amd64
-else
-  _libarch=i386
+if [ -f "release" ]; then
+    mv release $PREFIX/release
 fi
+
+mkdir -p $PREFIX/conf
+mv conf/* $PREFIX/conf
+
+mkdir -p $PREFIX/jmods
+mv jmods/* $PREFIX/jmods
+
+mkdir -p $PREFIX/legal
+mv legal/* $PREFIX/legal
+
+mkdir -p $PREFIX/man/man1
+mv man/man1/* $PREFIX/man/man1
+rm -rf man/man1
+mv man/* $PREFIX/man
 
 if [[ $(uname) == Linux ]]; then
-    mv lib/${_libarch}/jli/*.so lib
-    mv lib/${_libarch}/*.so lib
-    rm -r lib/${_libarch}
-    # libnio.so does not find this within jre/lib/amd64 subdirectory
-    cp jre/lib/${_libarch}/libnet.so lib
-
-    # include dejavu fonts to allow java to work even on minimal cloud images where these fonts are missing
-    # (thanks to @chapmanb)
-  pushd jre/lib/fonts
-    mv ttf/* ../
-    rm -rf ttf
-  popd
+    mv $PREFIX/lib/jli/*.so $PREFIX/lib/
+    mkdir -p %PREFIX/lib/fonts
+    mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
 fi
 
-mv jre "${PREFIX}"/
-if [[ -f src.zip ]]; then
-  mv src.zip "${PREFIX}"/jre/
-fi
-
-mv bin/* "${PREFIX}"/bin/
-mv lib/* "${PREFIX}"/lib/
-mv include/* "${PREFIX}"/include/
-
-# ensure that JAVA_HOME is set correctly
-mkdir -p "${PREFIX}"/etc/conda/activate.d
-mkdir -p "${PREFIX}"/etc/conda/deactivate.d
-cp "${RECIPE_DIR}"/scripts/activate.sh "${PREFIX}"/etc/conda/activate.d/java_home.sh
-cp "${RECIPE_DIR}"/scripts/deactivate.sh "${PREFIX}"/etc/conda/deactivate.d/java_home.sh
-
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    cp "${RECIPE_DIR}/scripts/${CHANGE\.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
 if [[ $(uname) == Darwin ]]; then
   popd
 fi

@@ -1,13 +1,30 @@
 Robocopy.exe /MOVE /S /E bin\ "%LIBRARY_BIN%"
 Robocopy.exe /MOVE /S /E include\ "%LIBRARY_INC%"
-Robocopy.exe /MOVE /S /E jre "%LIBRARY_PREFIX%"\jre
 Robocopy.exe /MOVE /S /E lib\ "%LIBRARY_LIB%"
 
-Robocopy.exe /MOVE /S /E jbrex\jre "%LIBRARY_PREFIX%"\jre
+XCOPY release %LIBRARY_PREFIX% /s /y /i
+if errorlevel 1 exit 1
 
-:: ensure that JAVA_HOME is set correctly
-mkdir "%PREFIX%"\etc\conda\activate.d
-echo set "JAVA_HOME_CONDA_BACKUP=%%JAVA_HOME%%" > "%PREFIX%\etc\conda\activate.d\java_home.bat"
-echo set "JAVA_HOME=%%CONDA_PREFIX%%\Library" >> "%PREFIX%\etc\conda\activate.d\java_home.bat"
-mkdir "%PREFIX%"\etc\conda\deactivate.d
-echo set "JAVA_HOME=%%JAVA_HOME_CONDA_BACKUP%%" > "%PREFIX%\etc\conda\deactivate.d\java_home.bat"
+if not exist "%LIBRARY_PREFIX%\conf\" mkdir %LIBRARY_PREFIX\conf\
+XCOPY conf\* %LIBRARY_PREFIX%\conf\ /s /i /y
+if errorlevel 1 exit 1
+
+if not exist "%LIBRARY_PREFIX%\jmods\" mkdir %LIBRARY_PREFIX\jmods\
+XCOPY jmods\* %LIBRARY_PREFIX%\jmods\ /s /i /y
+if errorlevel 1 exit 1
+
+if not exist "%LIBRARY_PREFIX%\legal\" mkdir %LIBRARY_PREFIX\legal\
+XCOPY legal\* %LIBRARY_PREFIX%\legal\ /s /i /y
+if errorlevel 1 exit 1
+
+FOR %%F IN (activate deactivate) DO (
+    if not exist %PREFIX%\etc\conda\%%F.d mkdir %PREFIX%\etc\conda\%%F.d
+    if errorlevel 1 exit 1
+    copy %RECIPE_DIR%\scripts\%%F.bat %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F.bat
+
+    :: We also copy .sh scripts to be able to use them
+    :: with POSIX CLI on Windows
+    copy %RECIPE_DIR%\scripts\%%F-win.sh %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F.sh
+    if errorlevel 1 exit 1
+)
+
