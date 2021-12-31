@@ -6,6 +6,10 @@ if [ "${JAVA_HOME}" != "${PREFIX}" ] && [ "${JAVA_HOME}" != "${PREFIX}/Library" 
   exit 1
 fi
 
+java -version
+
+sh ./test-jni.sh 
+
 pushd test-nio
   javac TestFilePaths.java
   jar cfm TestFilePaths.jar manifest.mf TestFilePaths.class

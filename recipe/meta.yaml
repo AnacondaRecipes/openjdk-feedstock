@@ -75,10 +75,54 @@ source:
 
 build:
   number: {{ build_number }}
-  track_features:
-    - openjdk
-  rpath:
-    - lib
+  #track_features:
+  #  - openjdk
+  #rpath:
+  #  - lib
+  ignore_run_exports:
+    - zlib  # [osx]
+  binary_relocation: False
+  detect_binary_files_with_prefix: False
+  missing_dso_whitelist:
+    - $RPATH/libz.so.1
+    - $RPATH/libjli.so
+    - $RPATH/libjvm.so
+    - $RPATH/libfreetype.so.6
+    - $RPATH/libgobject-2.0.so.0
+    - $RPATH/libglib-2.0.so.0
+    - $RPATH/libnss3.so
+    - $RPATH/libdrm.so.2
+    - $RPATH/libgbm.so.1
+    - $RPATH/libnssutil3.so
+    - $RPATH/libsmime3.so
+    - $RPATH/libnspr4.so
+    - $RPATH/libatk-1.0.so.0
+    - $RPATH/libatk-bridge-2.0.so.0
+    - $RPATH/libexpat.so.1
+    - $RPATH/libxcb.so.1
+    - $RPATH/libgio-2.0.so.0
+    - $RPATH/libxkbcommon.so.0
+    - $RPATH/libdbus-1.so.3
+    - $RPATH/libX11.so.6
+    - $RPATH/libXcomposite.so.1
+    - $RPATH/libXdamage.so.1
+    - $RPATH/libXext.so.6
+    - $RPATH/libXfixes.so.3
+    - $RPATH/libXrandr.so.2
+    - $RPATH/libasound.so.2
+    - $RPATH/libcups.so.2
+    - $RPATH/libatspi.so.0
+    - $RPATH/libxshmfence.so.1
+    - $RPATH/libjawt.so
+    - $RPATH/libXrender.so.1
+    - $RPATH/libXtst.so.6
+    - $RPATH/libXi.so.6
+    - $RPATH/libXxf86vm.so.1
+    - $RPATH/libXcursor.so.1
+    - $RPATH/libstdc++.so.6
+    - $RPATH/libjvm.dylib  # [osx]
+    - $RPATH/libjawt.dylib  # [osx]
+
 
 requirements:
   build:
@@ -86,7 +130,7 @@ requirements:
     - pkg-config        # [linux]
     - autoconf          # [linux]
     - unzip             # [linux]
-    - zip               # [linux]
+    - zip               # [linux and not ppc64le]
     - make !=4.3.*      # [linux]
   host:
     - zlib   # [unix]
