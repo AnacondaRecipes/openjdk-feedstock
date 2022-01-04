@@ -81,8 +81,6 @@ build:
   #  - lib
   ignore_run_exports:
     - zlib  # [osx]
-  binary_relocation: False
-  detect_binary_files_with_prefix: False
   missing_dso_whitelist:
     - $RPATH/libz.so.1
     - $RPATH/libjli.so
