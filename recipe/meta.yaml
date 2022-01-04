@@ -120,7 +120,20 @@ build:
     - $RPATH/libstdc++.so.6
     - $RPATH/libjvm.dylib  # [osx]
     - $RPATH/libjawt.dylib  # [osx]
-
+    - $RPATH/libpangoft2-1.0.so.0  # [linux and aarch64]
+    - $RPATH/libpango-1.0.so.0  # [linux and aarch64]
+    - $RPATH/libgtk-x11-2.0.so.0  # [linux and aarch64]
+    - $RPATH/libgdk-x11-2.0.so.0  # [linux and aarch64]
+    - $RPATH/libcairo.so.2  # [linux and aarch64]
+    - $RPATH/libgdk_pixbuf-2.0.so.0  # [linux and aarch64]
+    - $RPATH/libgthread-2.0.so.0  # [linux and aarch64]
+    - $RPATH/ld-linux-x86-64.so.2  # [linux and aarch64]
+    - $RPATH/libgtk-3.so.0  # [linux and aarch64]
+    - $RPATH/libgdk-3.so.0  # [linux and aarch64]
+    - $RPATH/libavcodec-ffmpeg.so.56  # [linux and aarch64]
+    - $RPATH/libavformat-ffmpeg.so.56  # [linux and aarch64]
+    - $RPATH/libGL.so.1  # [linux and aarch64]
+    - $RPATH/libgmodule-2.0.so.0  # [linux and aarch64]
 
 requirements:
   build:
