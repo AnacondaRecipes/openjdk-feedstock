@@ -134,6 +134,7 @@ build:
     - $RPATH/libavformat-ffmpeg.so.56  # [linux and aarch64]
     - $RPATH/libGL.so.1                # [linux and aarch64]
     - $RPATH/libgmodule-2.0.so.0       # [linux and aarch64]
+    - /*/*/*/*/*/*/*/Frameworks/JavaNativeFoundation.framework/JavaNativeFoundation  # [osx and arm64]
 
 requirements:
   build:
