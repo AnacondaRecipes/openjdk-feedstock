@@ -127,11 +127,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}   # [not win]
-    - pkg-config        # [linux]
-    - autoconf          # [linux]
-    - unzip             # [linux]
     - zip               # [linux and not ppc64le]
-    - make !=4.3.*      # [linux]
   host:
     - zlib   # [unix]
  
