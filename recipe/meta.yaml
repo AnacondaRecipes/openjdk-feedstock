@@ -140,7 +140,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}   # [not win]
-    - zip                     # [linux and not (ppc64le or s390x)]
+    - zip                     # [linux]
   host:
     - zlib                    # [unix]
  
