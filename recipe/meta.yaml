@@ -36,7 +36,7 @@ source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ uversion }}-osx-aarch64-b{{ intellij_build }}.tar.gz                   # [osx and arm64]
     fn: jbrsdk-{{ uversion }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                        # [osx and arm64]
     sha256: {{ sha256_osx_arm64 }}                                                                                                            # [osx and arm64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jsef-{{ uversion }}-osx-aarch64-b{{ intellij_build }}.tar.gz                 # [osx and arm64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ uversion }}-osx-aarch64-b{{ intellij_build }}.tar.gz                 # [osx and arm64]
     fn: jbr_jcef-{{ uversion }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [osx and arm64]
     sha256: {{ sha256_jbrex_osx_arm64 }}                                                                                                      # [osx and arm64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ uversion }}-linux-x64-b{{ intellij_build }}.tar.gz                     # [linux64]
