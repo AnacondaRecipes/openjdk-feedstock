@@ -134,7 +134,7 @@ build:
     - Library\bin\VCRUNTIME140.dll      # [win]
     - Library\bin\bin\VCRUNTIME140.dll  # [win]
     - Library\bin\MSVCP140.dll          # [win]
-    - Library\bin\bin\MSVCP140.dll   # [win]
+    - Library\bin\bin\MSVCP140.dll      # [win]
     - $RPATH/jvm.dll                    # [win]
 
 requirements:
@@ -159,7 +159,7 @@ test:
 
 about:
   home: https://github.com/JetBrains/JetBrainsRuntime
-  license: GPLv2
+  license: GPL-2.0-only
   license_family: GPL
   summary: The JetBrains Runtime OpenJDK build.
   description: |
