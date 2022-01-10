@@ -136,6 +136,7 @@ build:
     - Library\bin\MSVCP140.dll          # [win]
     - Library\bin\bin\MSVCP140.dll      # [win]
     - $RPATH/jvm.dll                    # [win]
+    - $RPATH/ld-linux-x86-64.so.2       # [s390x or ppc64le]
 
 requirements:
   build:
