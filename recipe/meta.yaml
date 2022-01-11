@@ -14,8 +14,6 @@
 {% set sha256_jbrex_linux_64 = "6bfa21611d62c45126e022796801ea45f29ae921861419295d47d107169056fc" %}
 {% set sha256_linux_aarch64 = "7bd76455e211098e954ee2c6a3d8c15533e2b80bbee7eef6b89fad36cfdc78d0" %}
 {% set sha256_jbrex_linux_aarch64 = "56309fcb763c5cc7a52fa2565866a1fcc2cddd9b515a7bce7401f7f8a8c9d2fe" %}
-{% set sha256_linux_32 = "d52eb4d89d523b4cf9cc7e158855adf6010c83e572308f8e973dae9ad4b25ce8" %}
-{% set sha256_jbrex_linux_32 = "ab51b84a51b89c2287c5e73272c577f073766e8071f937b0f599254b2087b84a" %}
 {% set sha256_dejagnu_fonts = "7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a" %}
 {% set sha256_win_64 = "dae01a2eb17d12d53c53f2e7260ac06a24206824895fd8eda7a85b144f4053fd" %}
 {% set sha256_jbrex_win_64 = "7a49c1dea35b7f32a2b82c65d3dca9eac861cb035adbbe4a3cae396a0da08b26" %}
@@ -51,12 +49,6 @@ source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr-{{ uversion }}-linux-aarch64-b{{ intellij_build }}.tar.gz                    # [linux and aarch64]
     fn: jbr-{{ uversion }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                         # [linux and aarch64]
     sha256: {{ sha256_jbrex_linux_aarch64 }}                                                                                                  # [linux and aarch64]
-#  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ uversion }}-linux-x86-b{{ intellij_build }}.tar.gz                     # [linux32]
-#    fn: jbrsdk-{{ uversion }}-linux-x86-b{{ intellij_build }}.tar.gz                                                                          # [linux32]
-#    sha256: {{ sha256_linux_32 }}                                                                                                             # [linux32]
-#  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr-{{ uversion }}-linux-x86-b{{ intellij_build }}.tar.gz                        # [linux32]
-#    fn: jbr-{{ uversion }}-linux-x86-b{{ intellij_build }}.tar.gz                                                                             # [linux32]
-#    sha256: {{ sha256_jbrex_linux_32 }}                                                                                                       # [linux32]
   - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                                # [linux]
     sha256: {{ sha256_dejagnu_fonts }}                                                                                                        # [linux]
     folder: fonts                                                                                                                             # [linux]
