@@ -88,7 +88,7 @@ build:
     - $RPATH/libnspr4.so
     - $RPATH/libatk-1.0.so.0
     - $RPATH/libatk-bridge-2.0.so.0
-    #- $RPATH/libexpat.so.1
+    - $RPATH/libexpat.so.1
     - $RPATH/libxcb.so.1
     - $RPATH/libgio-2.0.so.0
     - $RPATH/libxkbcommon.so.0
@@ -139,7 +139,6 @@ requirements:
     - zip                     # [linux]
   host:
     - zlib                    # [unix]
-    - expat
  
 test:
   requires:
