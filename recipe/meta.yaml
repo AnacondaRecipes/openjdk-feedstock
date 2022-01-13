@@ -72,12 +72,17 @@ build:
   # but currently is  available GLIBC_2.26.
   skip: True  # [ppc64le or s390x or aarch64]
   ignore_run_exports:
-    - zlib  # [osx]
+    - zlib               # [osx]
+    - expat              # [linux]
+    - dbus               # [linux]
+    - freetype           # [linux]
+    - pango              # [linux and aarch64]
+    - cairo              # [linux and aarch64]
   missing_dso_whitelist:
     - $RPATH/libz.so.1
     - $RPATH/libjli.so
     - $RPATH/libjvm.so
-    - $RPATH/libfreetype.so.6
+    #- $RPATH/libfreetype.so.6
     - $RPATH/libgobject-2.0.so.0
     - $RPATH/libglib-2.0.so.0
     - $RPATH/libnss3.so
@@ -88,11 +93,11 @@ build:
     - $RPATH/libnspr4.so
     - $RPATH/libatk-1.0.so.0
     - $RPATH/libatk-bridge-2.0.so.0
-    - $RPATH/libexpat.so.1
+    #- $RPATH/libexpat.so.1
     - $RPATH/libxcb.so.1
     - $RPATH/libgio-2.0.so.0
     - $RPATH/libxkbcommon.so.0
-    - $RPATH/libdbus-1.so.3
+    #- $RPATH/libdbus-1.so.3
     - $RPATH/libX11.so.6
     - $RPATH/libXcomposite.so.1
     - $RPATH/libXdamage.so.1
@@ -113,10 +118,10 @@ build:
     - $RPATH/libjvm.dylib               # [osx]
     - $RPATH/libjawt.dylib              # [osx]
     - $RPATH/libpangoft2-1.0.so.0       # [linux and aarch64]
-    - $RPATH/libpango-1.0.so.0          # [linux and aarch64]
+    #- $RPATH/libpango-1.0.so.0          # [linux and aarch64]
     - $RPATH/libgtk-x11-2.0.so.0        # [linux and aarch64]
     - $RPATH/libgdk-x11-2.0.so.0        # [linux and aarch64]
-    - $RPATH/libcairo.so.2              # [linux and aarch64]
+    #- $RPATH/libcairo.so.2              # [linux and aarch64]
     - $RPATH/libgdk_pixbuf-2.0.so.0     # [linux and aarch64]
     - $RPATH/libgthread-2.0.so.0        # [linux and aarch64]
     - $RPATH/ld-linux-x86-64.so.2       # [linux and (aarch64 or s390x or ppc64le)]
@@ -139,6 +144,11 @@ requirements:
     - zip                     # [linux]
   host:
     - zlib                    # [unix]
+    - expat                   # [linux]
+    - dbus                    # [linux]
+    - freetype                # [linux]
+    - pango                   # [linux]
+    - cairo                   # [linux]
  
 test:
   requires:
