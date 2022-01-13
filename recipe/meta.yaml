@@ -147,8 +147,18 @@ requirements:
     - expat                   # [linux]
     - dbus                    # [linux]
     - freetype                # [linux]
-    - pango                   # [linux]
-    - cairo                   # [linux]
+    - pango                   # [linux and aarch64]
+    - cairo                   # [linux and aarch64]
+    - glib                    # [linux]
+    - libxcb                  # [linux]
+  run:
+    - expat                   # [linux]
+    - dbus                    # [linux]
+    - freetype                # [linux]
+    - pango                   # [linux and aarch64]
+    - cairo                   # [linux and aarch64]
+    - glib                    # [linux]
+    - libxcb                  # [linux]
  
 test:
   requires:
