@@ -42,6 +42,9 @@ mv legal/* $PREFIX/legal
 if [[ $(uname) == Linux ]]; then
     mkdir -p %PREFIX/lib/fonts
     mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
+    # This patchelf call is needed because libGLESv2 requires libwayland-client but it is not
+    # really needed for our purposes.
+    patchelf --remove-needed libwayland-client.so.0 %PREFIX/lib/libGLESv2.so
 fi
 
 for CHANGE in "activate" "deactivate"

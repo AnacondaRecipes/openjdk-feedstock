@@ -66,12 +66,13 @@ build:
   number: {{ build_number }}
   skip: True  # [ppc64le or s390x or win32]
   ignore_run_exports:
-    - cairo              # [linux and aarch64]
+    - cairo              # [linux]
     - dbus               # [linux]
     - expat              # [linux]
     - freetype           # [linux]
     - libxcb             # [linux]
-    - pango              # [linux and aarch64]
+    - pango              # [linux]
+    - pixman             # [linux]
     - zlib               # [osx]
   missing_dso_whitelist:
     - $RPATH/libz.so.1
@@ -136,23 +137,24 @@ requirements:
   build:
     - {{ compiler('cxx') }}   # [not win]
     - zip                     # [linux]
+    - patchelf                # [linux]
   host:
-    - cairo                   # [linux and aarch64]
+    - cairo                   # [linux]
     - dbus                    # [linux]
     - expat                   # [linux]
     - freetype                # [linux]
     - glib                    # [linux]
     - libxcb                  # [linux]
-    - pango                   # [linux and aarch64]
+    - pango                   # [linux]
     - zlib                    # [unix]
   run:
-    - cairo                   # [linux and aarch64]
+    - cairo                   # [linux]
     - dbus                    # [linux]
     - expat                   # [linux]
     - freetype                # [linux]
     - glib                    # [linux]
     - libxcb                  # [linux]
-    - pango                   # [linux and aarch64]
+    - pango                   # [linux]
  
 test:
   requires:
