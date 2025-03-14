@@ -153,6 +153,7 @@ about:
   home: https://github.com/JetBrains/JetBrainsRuntime
   license: GPL-2.0-only
   license_family: GPL
+  license_url: https://github.com/JetBrains/JetBrainsRuntime/blob/jdk-21%2B35/LICENSE
   summary: The JetBrains Runtime OpenJDK build.
   description: |
     JetBrains Runtime is a runtime environment for running
