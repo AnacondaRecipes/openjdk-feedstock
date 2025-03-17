@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+if [[ $target_platform == osx-64 ]]; then
+  CONDA_BUILD_SYSROOT="/opt/MacOSX11.1.sdk"
+fi
+
 if [ "${JAVA_HOME}" != "${PREFIX}" ] && [ "${JAVA_HOME}" != "${PREFIX}/Library" ]; then
   echo "ERROR: JAVA_HOME (${JAVA_HOME}) not equal to PREFIX (${PREFIX}) or ${PREFIX}/Library"
   exit 1
