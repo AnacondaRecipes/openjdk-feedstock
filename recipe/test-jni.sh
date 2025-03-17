@@ -6,6 +6,8 @@ if [[ ! -d $JAVA_LD_LIBRARY_PATH ]]; then
   exit 1
 fi
 
+ls $JAVA_LD_LIBRARY_PATH
+
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
   -v                                  \
