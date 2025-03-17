@@ -107,10 +107,17 @@ build:
     - /*/*/*/*/*/*/*/Frameworks/JavaNativeFoundation.framework/JavaNativeFoundation  # [osx and arm64]
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport  # [osx and x86_64]
     - Library\bin\VCRUNTIME140.dll      # [win]
+    - Library\bin\VCRUNTIME140_1.dll      # [win]
     - Library\bin\bin\VCRUNTIME140.dll  # [win]
+    - Library\bin\bin\VCRUNTIME140_1.dll  # [win]
     - Library\bin\MSVCP140.dll          # [win]
     - Library\bin\bin\MSVCP140.dll      # [win]
     - $RPATH/jvm.dll                    # [win]
+    - $RPATH/libcef.dll  # [win]
+    - $RPATH/chrome_elf.dll  # [win]
+    - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll  # [win]
+    - $RPATH/api-ms-win-core-realtime-l1-1-1.dll  # [win]
+    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll  # [win]
     - $RPATH/libwayland-client.so.0
     - $RPATH/libwayland-cursor.so.0
 
