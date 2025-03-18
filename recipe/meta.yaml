@@ -48,12 +48,10 @@ build:
   # openjdk 21.0.6 is not currently supported on ppc64le or s390x.
   skip: True  # [ppc64le or s390x]
   ignore_run_exports:
-    # - cairo              # [linux and aarch64]
     - dbus               # [linux]
     - expat              # [linux]
     - freetype           # [linux]
     - libxcb             # [linux]
-    # - pango              # [linux and aarch64]
     - zlib               # [osx]
     - glib               # [linux]
   missing_dso_whitelist:
@@ -153,11 +151,6 @@ test:
     - test-jni     # [not win]
     - test-jni.sh  # [not win]
     - test-nio
-  # commands:
-    # - java -version
-    # - ./test-jni.sh                                # [not win]
-    # - conda inspect linkages -p ${PREFIX} openjdk  # [linux]
-    # - conda inspect objects -p ${PREFIX} openjdk   # [osx]
 
 about:
   home: https://github.com/JetBrains/JetBrainsRuntime
