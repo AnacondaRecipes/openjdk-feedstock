@@ -13,9 +13,9 @@ echo "CONDA_BUILD_SYSROOT: $CONDA_BUILD_SYSROOT"
 
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
-  -F$CONDA_BUILD_SYSROOT              \
   -v                                  \
   -Xlinker -v                         \
+  -Xlinker -macosx_version_min 11.1   \
   -I${JAVA_HOME}/include              \
   -I${JAVA_HOME}/include/$os          \
   -L${JAVA_LD_LIBRARY_PATH}           \
