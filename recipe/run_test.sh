@@ -5,6 +5,7 @@ if [[ $target_platform == osx-64 ]]; then
   CONDA_BUILD_SYSROOT="/opt/MacOSX11.1.sdk"
   echo "Old DEVELOPER_DIR: $DEVELOPER_DIR"
   DEVELOPER_DIR="/opt/MacOSX11.1.sdk"
+  ls /opt/MacOSX*
 fi
 
 if [ "${JAVA_HOME}" != "${PREFIX}" ] && [ "${JAVA_HOME}" != "${PREFIX}/Library" ]; then
