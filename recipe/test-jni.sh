@@ -6,6 +6,11 @@ if [[ ! -d $JAVA_LD_LIBRARY_PATH ]]; then
   exit 1
 fi
 
+OSX_EXTRA_ARG=""
+if [[ $target_platform == osx-64 ]]; then
+  OSX_EXTRA_ARG="-mmacosx-version-min=11.1"
+fi
+
 ls $JAVA_LD_LIBRARY_PATH
 
 echo "DEVELOPER_DIR: $DEVELOPER_DIR"
@@ -15,7 +20,7 @@ os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
   -v                                  \
   -Xlinker -v                         \
-  -Xlinker -macosx_version_min=11.1   \
+  $OSX_EXTRA_ARG                      \
   -I${JAVA_HOME}/include              \
   -I${JAVA_HOME}/include/$os          \
   -L${JAVA_LD_LIBRARY_PATH}           \
