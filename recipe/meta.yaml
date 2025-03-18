@@ -9,7 +9,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                       # [osx and not arm64]]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                       # [osx and not arm64]
     fn: jbrsdk-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                                                                            # [osx and not arm64]
     sha256: d872b655624d173edf576873a840c3d9c5b6cbf5184c93d51d916341749148cd                                                                 # [osx and not arm64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                     # [osx and not arm64]
@@ -30,8 +30,8 @@ source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                 # [linux and aarch64]
     fn: jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [linux and aarch64]
     sha256: a5e35916ab77f86a1d903850fc62560fc5c3fd1933b1cfbd1eb06d39f68ffba5                                                                 # [linux and aarch64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                    # [linux and aarch64]
-    fn: jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                         # [linux and aarch64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz               # [linux and aarch64]
+    fn: jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [linux and aarch64]
     sha256: df21732145817795e4d77c94690f54b9d29ab73995a4dc0c89313199aa14eea1                                                                 # [linux and aarch64]
   - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                               # [linux]
     sha256: 7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a                                                                 # [linux]
