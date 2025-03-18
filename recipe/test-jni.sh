@@ -8,7 +8,7 @@ fi
 
 OSX_EXTRA_ARG=""
 if [[ $target_platform == osx-64 ]]; then
-  OSX_EXTRA_ARG="-mmacosx-version-min=11.1"
+  OSX_EXTRA_ARG="-mmacosx-version-min=13.0"
 fi
 
 ls $JAVA_LD_LIBRARY_PATH
