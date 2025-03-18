@@ -15,7 +15,7 @@ os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
   -v                                  \
   -Xlinker -v                         \
-  -Xlinker -macosx_version_min 11.1   \
+  -Xlinker -macosx_version_min=11.1   \
   -I${JAVA_HOME}/include              \
   -I${JAVA_HOME}/include/$os          \
   -L${JAVA_LD_LIBRARY_PATH}           \
