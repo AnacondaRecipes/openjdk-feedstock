@@ -20,6 +20,7 @@ ${CC}                                 \
   -L$JAVA_LD_LIBRARY_PATH/server      \
   -ljvm                               \
   -o vmtest                           \
+  -F $CONDA_BUILD_SYSROOT             \
   test-jni/vmtest.c
 	
 ./vmtest

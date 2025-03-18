@@ -46,7 +46,6 @@ source:
 build:
   number: 0
   # openjdk 21.0.6 is not currently supported on ppc64le or s390x.
-  # openjdk 11.0.13 requires GLIBC_2.27 on aarch64, but currently is available GLIBC_2.26.
   skip: True  # [ppc64le or s390x]
   ignore_run_exports:
     # - cairo              # [linux and aarch64]
@@ -104,23 +103,23 @@ build:
     - $RPATH/libavformat-ffmpeg.so.56   # [linux and aarch64]
     - $RPATH/libGL.so.1                 # [linux and aarch64]
     - $RPATH/libgmodule-2.0.so.0        # [linux and aarch64]
-    - /*/*/*/*/*/*/*/Frameworks/JavaNativeFoundation.framework/JavaNativeFoundation  # [osx and arm64]
+    - /*/*/*/*/*/*/*/Frameworks/JavaNativeFoundation.framework/JavaNativeFoundation       # [osx and arm64]
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport  # [osx and x86_64]
-    - Library\bin\VCRUNTIME140.dll      # [win]
+    - Library\bin\VCRUNTIME140.dll        # [win]
     - Library\bin\VCRUNTIME140_1.dll      # [win]
-    - Library\bin\bin\VCRUNTIME140.dll  # [win]
+    - Library\bin\bin\VCRUNTIME140.dll    # [win]
     - Library\bin\bin\VCRUNTIME140_1.dll  # [win]
-    - Library\bin\MSVCP140.dll          # [win]
-    - Library\bin\bin\MSVCP140.dll      # [win]
-    - $RPATH/jvm.dll                    # [win]
-    - $RPATH/libcef.dll  # [win]
-    - $RPATH/chrome_elf.dll  # [win]
+    - Library\bin\MSVCP140.dll            # [win]
+    - Library\bin\bin\MSVCP140.dll        # [win]
+    - $RPATH/jvm.dll                      # [win]
+    - $RPATH/libcef.dll                   # [win]
+    - $RPATH/chrome_elf.dll               # [win]
     - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll  # [win]
-    - $RPATH/api-ms-win-core-realtime-l1-1-1.dll  # [win]
-    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll  # [win]
-    - $RPATH/api-ms-win-shcore-scaling-l1-1-1.dll  # [win]
-    - $RPATH/api-ms-win-power-base-l1-1-0.dll  # [win]
-    - $RPATH/api-ms-win-power-setting-l1-1-0.dll  # [win]
+    - $RPATH/api-ms-win-core-realtime-l1-1-1.dll      # [win]
+    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll         # [win]
+    - $RPATH/api-ms-win-shcore-scaling-l1-1-1.dll     # [win]
+    - $RPATH/api-ms-win-power-base-l1-1-0.dll         # [win]
+    - $RPATH/api-ms-win-power-setting-l1-1-0.dll      # [win]
     - $RPATH/libwayland-client.so.0
     - $RPATH/libwayland-cursor.so.0
 
