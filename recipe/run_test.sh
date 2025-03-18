@@ -6,6 +6,7 @@ if [[ $target_platform == osx-64 ]]; then
   # echo "Old DEVELOPER_DIR: $DEVELOPER_DIR"
   # DEVELOPER_DIR="/opt/MacOSX11.1.sdk"
   ls /opt/MacOSX*
+  which -a ld
 fi
 
 if [ "${JAVA_HOME}" != "${PREFIX}" ] && [ "${JAVA_HOME}" != "${PREFIX}/Library" ]; then
