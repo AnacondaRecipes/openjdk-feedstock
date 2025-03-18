@@ -8,8 +8,12 @@ fi
 
 ls $JAVA_LD_LIBRARY_PATH
 
+echo "DEVELOPER_DIR: $DEVELOPER_DIR"
+echo "CONDA_BUILD_SYSROOT: $CONDA_BUILD_SYSROOT"
+
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
+  -F$CONDA_BUILD_SYSROOT              \
   -v                                  \
   -Xlinker -v                         \
   -I${JAVA_HOME}/include              \
@@ -20,7 +24,6 @@ ${CC}                                 \
   -L$JAVA_LD_LIBRARY_PATH/server      \
   -ljvm                               \
   -o vmtest                           \
-  -F $CONDA_BUILD_SYSROOT             \
   test-jni/vmtest.c
 	
 ./vmtest
