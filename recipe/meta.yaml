@@ -133,8 +133,8 @@ requirements:
     - expat                   # [linux]
     - freetype                # [linux]
     - glib                    # [linux]
-    - libxcb                  # [linux]
-    - pango                   # [linux]
+    - libxcb 1.15             # [linux]
+    - pango 1.50.7            # [linux]
     - zlib                    # [unix]
   run:
     - cairo                   # [linux]
