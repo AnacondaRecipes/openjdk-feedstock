@@ -122,6 +122,7 @@ build:
     - $RPATH/api-ms-win-power-setting-l1-1-0.dll      # [win]
     - $RPATH/libwayland-client.so.0
     - $RPATH/libwayland-cursor.so.0
+    - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
 
 requirements:
   build:
