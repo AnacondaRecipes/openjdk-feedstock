@@ -2,11 +2,9 @@
 set -e
 
 if [[ $target_platform == osx-64 ]]; then
-  # CONDA_BUILD_SYSROOT="/opt/MacOSX11.1.sdk"
-  # echo "Old DEVELOPER_DIR: $DEVELOPER_DIR"
-  # DEVELOPER_DIR="/opt/MacOSX11.1.sdk"
-  ls /opt/MacOSX*
-  which -a ld
+  echo DEBUG_libSystem.tbd_START
+  cat /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/lib/libSystem.tbd
+  echo DEBUG_libSystem.tbd_END
 fi
 
 if [ "${JAVA_HOME}" != "${PREFIX}" ] && [ "${JAVA_HOME}" != "${PREFIX}/Library" ]; then
