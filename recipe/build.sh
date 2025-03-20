@@ -40,7 +40,7 @@ mv legal/* $PREFIX/legal
 #mv man/* $PREFIX/man
 
 if [[ $(uname) == Linux ]]; then
-    mv $PREFIX/lib/jli/*.so $PREFIX/lib/
+    # mv $PREFIX/lib/jli/*.so $PREFIX/lib/
     mkdir -p %PREFIX/lib/fonts
     mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
 fi

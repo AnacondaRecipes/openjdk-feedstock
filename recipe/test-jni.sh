@@ -8,6 +8,8 @@ fi
 
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 ${CC}                                 \
+  -v                                  \
+  -Xlinker -v                         \
   -I${JAVA_HOME}/include              \
   -I${JAVA_HOME}/include/$os          \
   -L${JAVA_LD_LIBRARY_PATH}           \
