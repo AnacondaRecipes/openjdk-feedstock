@@ -125,24 +125,24 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - zip                     # [linux]
+    - zip                      # [linux]
   host:
-    - cairo                   # [linux]
-    - dbus                    # [linux]
-    - expat                   # [linux]
-    - freetype                # [linux]
-    - glib                    # [linux]
-    - libxcb 1.15             # [linux]
-    - pango 1.50.7            # [linux]
-    - zlib                    # [unix]
+    - cairo {{ cairo }}        # [linux]
+    - dbus {{ dbus }}          # [linux]
+    - expat {{ expat }}        # [linux]
+    - freetype {{ freetype }}  # [linux]
+    - glib {{ glib }}          # [linux]
+    - libxcb 1.15              # [linux]
+    - pango 1.50.7             # [linux]
+    - zlib {{ zlib }}          # [unix]
   run:
-    - cairo                   # [linux]
-    - dbus                    # [linux]
-    - expat                   # [linux]
-    - freetype                # [linux]
-    - glib                    # [linux]
-    - libxcb                  # [linux]
-    - pango                   # [linux]
+    - cairo                    # [linux]
+    - dbus                     # [linux]
+    - expat                    # [linux]
+    - freetype                 # [linux]
+    - glib                     # [linux]
+    - libxcb                   # [linux]
+    - pango                    # [linux]
  
 test:
   requires:
