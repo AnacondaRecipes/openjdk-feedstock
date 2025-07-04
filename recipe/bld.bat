@@ -1,6 +1,6 @@
-Robocopy.exe /MOVE /S /E bin\ "%LIBRARY_BIN%"
-Robocopy.exe /MOVE /S /E include\ "%LIBRARY_INC%"
-Robocopy.exe /MOVE /S /E lib\ "%LIBRARY_LIB%"
+Robocopy.exe /MOVE /S /E bin\ "%LIBRARY_PREFIX%"
+Robocopy.exe /MOVE /S /E include\ "%LIBRARY_PREFIX%"
+Robocopy.exe /MOVE /S /E lib\ "%LIBRARY_PREFIX%"
 
 XCOPY release %LIBRARY_PREFIX% /s /y /i
 if errorlevel 1 exit 1
