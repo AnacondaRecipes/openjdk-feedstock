@@ -46,84 +46,36 @@ source:
 build:
   number: 0
   ignore_run_exports:
-    - dbus               # [linux]
-    - expat              # [linux]
-    - freetype           # [linux]
-    - libxcb             # [linux]
-    - zlib               # [osx]
-    - glib               # [linux]
+    - libstdcxx-ng  # [linux]
   missing_dso_whitelist:
-    - $RPATH/libz.so.1
-    - $RPATH/libjli.so
-    - $RPATH/libjvm.so
-    - $RPATH/libgobject-2.0.so.0
-    - $RPATH/libglib-2.0.so.0
-    - $RPATH/libnss3.so
-    - $RPATH/libdrm.so.2
-    - $RPATH/libgbm.so.1
-    - $RPATH/libnssutil3.so
-    - $RPATH/libsmime3.so
-    - $RPATH/libnspr4.so
-    - $RPATH/libatk-1.0.so.0
-    - $RPATH/libatk-bridge-2.0.so.0
-    - $RPATH/libgio-2.0.so.0
-    - $RPATH/libxkbcommon.so.0
-    - $RPATH/libX11.so.6
-    - $RPATH/libXcomposite.so.1
-    - $RPATH/libXdamage.so.1
-    - $RPATH/libXext.so.6
-    - $RPATH/libXfixes.so.3
-    - $RPATH/libXrandr.so.2
-    - $RPATH/libasound.so.2
-    - $RPATH/libcups.so.2
-    - $RPATH/libatspi.so.0
-    - $RPATH/libxshmfence.so.1
-    - $RPATH/libjawt.so
-    - $RPATH/libXrender.so.1
-    - $RPATH/libXtst.so.6
-    - $RPATH/libXi.so.6
-    - $RPATH/libXxf86vm.so.1
-    - $RPATH/libXcursor.so.1
-    - $RPATH/libstdc++.so.6
-    - $RPATH/libjvm.dylib               # [osx]
-    - $RPATH/libjawt.dylib              # [osx]
-    - $RPATH/libpangoft2-1.0.so.0       # [linux and aarch64]
-    - $RPATH/libgtk-x11-2.0.so.0        # [linux and aarch64]
-    - $RPATH/libgdk-x11-2.0.so.0        # [linux and aarch64]
-    - $RPATH/libgdk_pixbuf-2.0.so.0     # [linux and aarch64]
-    - $RPATH/libgthread-2.0.so.0        # [linux and aarch64]
-    - $RPATH/ld-linux-x86-64.so.2       # [linux and (aarch64 or s390x or ppc64le)]
-    - $RPATH/libgtk-3.so.0              # [linux and aarch64]
-    - $RPATH/libgdk-3.so.0              # [linux and aarch64]
-    - $RPATH/libavcodec-ffmpeg.so.56    # [linux and aarch64]
-    - $RPATH/libavformat-ffmpeg.so.56   # [linux and aarch64]
-    - $RPATH/libGL.so.1                 # [linux and aarch64]
-    - $RPATH/libgmodule-2.0.so.0        # [linux and aarch64]
-    - /*/*/*/*/*/*/*/Frameworks/JavaNativeFoundation.framework/JavaNativeFoundation       # [osx and arm64]
+    - $RPATH/libjvm.so               # [linux]
+    - $RPATH/libnss3.so              # [linux]
+    - $RPATH/libdrm.so.2             # [linux]
+    - $RPATH/libgbm.so.1             # [linux]
+    - $RPATH/libnssutil3.so          # [linux]
+    - $RPATH/libsmime3.so            # [linux]
+    - $RPATH/libnspr4.so             # [linux]
+    - $RPATH/libatk-1.0.so.0         # [linux]
+    - $RPATH/libatk-bridge-2.0.so.0  # [linux]
+    - $RPATH/libxkbcommon.so.0       # [linux]
+    - $RPATH/libX11.so.6             # [linux]
+    - $RPATH/libXcomposite.so.1      # [linux]
+    - $RPATH/libXdamage.so.1         # [linux]
+    - $RPATH/libXext.so.6            # [linux]
+    - $RPATH/libXfixes.so.3          # [linux]
+    - $RPATH/libXrandr.so.2          # [linux]
+    - $RPATH/libasound.so.2          # [linux]
+    - $RPATH/libcups.so.2            # [linux]
+    - $RPATH/libatspi.so.0           # [linux]
+    - $RPATH/libXrender.so.1         # [linux]
+    - $RPATH/libXtst.so.6            # [linux]
+    - $RPATH/libXi.so.6              # [linux]
+    - $RPATH/libjvm.dylib            # [osx]
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport  # [osx and x86_64]
-    - Library\bin\VCRUNTIME140.dll        # [win]
-    - Library\bin\VCRUNTIME140_1.dll      # [win]
-    - Library\bin\bin\VCRUNTIME140.dll    # [win]
-    - Library\bin\bin\VCRUNTIME140_1.dll  # [win]
-    - Library\bin\MSVCP140.dll            # [win]
-    - Library\bin\bin\MSVCP140.dll        # [win]
-    - $RPATH/jvm.dll                      # [win]
-    - $RPATH/libcef.dll                   # [win]
-    - $RPATH/chrome_elf.dll               # [win]
-    - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll  # [win]
-    - $RPATH/api-ms-win-core-realtime-l1-1-1.dll      # [win]
-    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll         # [win]
-    - $RPATH/api-ms-win-shcore-scaling-l1-1-1.dll     # [win]
-    - $RPATH/api-ms-win-power-base-l1-1-0.dll         # [win]
-    - $RPATH/api-ms-win-power-setting-l1-1-0.dll      # [win]
-    - $RPATH/libwayland-client.so.0
-    - $RPATH/libwayland-cursor.so.0
-    - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
-    - zip                      # [linux]
+    - {{ compiler('cxx') }}    # [linux]
   host:
     - cairo {{ cairo }}        # [linux]
     - dbus {{ dbus }}          # [linux]
@@ -132,15 +84,7 @@ requirements:
     - glib {{ glib }}          # [linux]
     - libxcb 1.15              # [linux]
     - pango 1.50.7             # [linux]
-    - zlib {{ zlib }}          # [unix]
-  run:
-    - cairo                    # [linux]
-    - dbus                     # [linux]
-    - expat                    # [linux]
-    - freetype                 # [linux]
-    - glib                     # [linux]
-    - libxcb                   # [linux]
-    - pango                    # [linux]
+    - zlib {{ zlib }}          # [linux]
 
 test:
   requires:
@@ -149,6 +93,7 @@ test:
     - test-jni     # [not win]
     - test-jni.sh  # [not win]
     - test-nio
+    - test-awt
 
 about:
   home: https://github.com/JetBrains/JetBrainsRuntime
