@@ -70,8 +70,11 @@ build:
     - $RPATH/libXrender.so.1         # [linux]
     - $RPATH/libXtst.so.6            # [linux]
     - $RPATH/libXi.so.6              # [linux]
+    - $RPATH/libXxf86vm.so.1         # [linux]
+    - $RPATH/libXcursor.so.1         # [linux]
     - $RPATH/libjvm.dylib            # [osx]
-    - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport  # [osx and x86_64]
+    - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport             # [osx and x86_64]
+    - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
 
 requirements:
   build:
