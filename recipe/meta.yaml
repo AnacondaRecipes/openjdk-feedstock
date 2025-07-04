@@ -80,7 +80,7 @@ build:
 requirements:
   build:
     # Needed for c/c++ runtime exports
-    - {{ compiler('cxx') }}    # [linux]
+    - {{ compiler('cxx') }}    # [not osx]
   host:
     - cairo {{ cairo }}        # [linux]
     - dbus {{ dbus }}          # [linux]
@@ -90,8 +90,6 @@ requirements:
     - libxcb 1.15              # [linux]
     - pango 1.50.7             # [linux]
     - zlib {{ zlib }}          # [linux]
-  run:
-    - vs2015_runtime           # [win]
 
 test:
   requires:
