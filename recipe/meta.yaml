@@ -73,12 +73,14 @@ build:
     - $RPATH/libXxf86vm.so.1         # [linux]
     - $RPATH/libXcursor.so.1         # [linux]
     - $RPATH/libjvm.dylib            # [osx]
+    - $RPATH/jvm.dll                 # [win]
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport             # [osx and x86_64]
     - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
 
 requirements:
   build:
-    - {{ compiler('cxx') }}    # [not osx]
+    # Needed for c/c++ runtime exports
+    - {{ compiler('cxx') }}    # [linux]
   host:
     - cairo {{ cairo }}        # [linux]
     - dbus {{ dbus }}          # [linux]
@@ -88,6 +90,8 @@ requirements:
     - libxcb 1.15              # [linux]
     - pango 1.50.7             # [linux]
     - zlib {{ zlib }}          # [linux]
+  run:
+    - vs2015_runtime           # [win]
 
 test:
   requires:
