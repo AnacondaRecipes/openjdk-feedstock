@@ -78,7 +78,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('cxx') }}    # [linux]
+    - {{ compiler('cxx') }}    # [not osx]
   host:
     - cairo {{ cairo }}        # [linux]
     - dbus {{ dbus }}          # [linux]
