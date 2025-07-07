@@ -36,6 +36,8 @@ source:
   - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                               # [linux]
     sha256: 7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a                                                                 # [linux]
     folder: fonts                                                                                                                            # [linux]
+    # Splitting sources on windows because conda-build is embedding one into another instead of merging them
+    # which results in directory structure like ...\bin\bin\ etc.
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                   # [win64]
     fn: jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                        # [win64]
     sha256: 79992161282de814b6a8e0c5005c75a61082783a76935e866e13cf753ab19687                                                                 # [win64]
