@@ -39,7 +39,7 @@ source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                   # [win64]
     fn: jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                        # [win64]
     sha256: 79992161282de814b6a8e0c5005c75a61082783a76935e866e13cf753ab19687                                                                 # [win64]
-    folder: jrbsdk                                                                                                                           # [win64]
+    folder: jbrsdk                                                                                                                           # [win64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                 # [win64]
     fn: jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                      # [win64]
     sha256: f653f5932c4f982df315051174b23bc305c51aff1a3593fb9c9ca8f611a9381e                                                                 # [win64]
