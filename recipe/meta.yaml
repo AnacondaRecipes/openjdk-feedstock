@@ -50,7 +50,11 @@ build:
   ignore_run_exports:
     - libstdcxx-ng  # [linux]
   missing_dso_whitelist:
+    # jvm is discoverable under $RPATH/bin/server/...
     - $RPATH/libjvm.so               # [linux]
+    - $RPATH/libjvm.dylib            # [osx]
+    - $RPATH/jvm.dll                 # [win]
+    # linux system libs
     - $RPATH/libnss3.so              # [linux]
     - $RPATH/libdrm.so.2             # [linux]
     - $RPATH/libgbm.so.1             # [linux]
@@ -74,10 +78,16 @@ build:
     - $RPATH/libXi.so.6              # [linux]
     - $RPATH/libXxf86vm.so.1         # [linux]
     - $RPATH/libXcursor.so.1         # [linux]
-    - $RPATH/libjvm.dylib            # [osx]
-    - $RPATH/jvm.dll                 # [win]
+    # osx-64 system libs
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport             # [osx and x86_64]
     - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
+    # windows system libs
+    - $RPATH/api-ms-win-core-winrt-string-l1-1-0.dll  # [win]
+    - $RPATH/api-ms-win-core-realtime-l1-1-1.dll      # [win]
+    - $RPATH/api-ms-win-core-winrt-l1-1-0.dll         # [win]
+    - $RPATH/api-ms-win-shcore-scaling-l1-1-1.dll     # [win]
+    - $RPATH/api-ms-win-power-base-l1-1-0.dll         # [win]
+    - $RPATH/api-ms-win-power-setting-l1-1-0.dll      # [win]
 
 requirements:
   build:
