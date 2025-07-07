@@ -15,3 +15,9 @@ pushd test-nio
   jar cfm TestFilePaths.jar manifest.mf TestFilePaths.class
   java -jar TestFilePaths.jar TestFilePaths.java
 popd
+
+# Test linking to libjvm.dylib (not found in $RPATH/libjvm.dylib for awt and several others)
+pushd test-awt
+  javac TestAWT.java
+  java TestAWT
+popd
