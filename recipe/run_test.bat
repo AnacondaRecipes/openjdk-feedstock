@@ -9,3 +9,9 @@ pushd test-nio
   java -jar TestFilePaths.jar TestFilePaths.java
   IF ERRORLEVEL 1 exit 1
 popd
+
+pushd test-awt
+  javac TestAWT.java
+  java TestAWT
+  IF ERRORLEVEL 1 exit 1
+popd

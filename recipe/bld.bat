@@ -1,26 +1,30 @@
-XCOPY bin\* "%LIBRARY_BIN%\" /s /e /y
+XCOPY jbrsdk\bin\* "%LIBRARY_BIN%\" /s /e /y
 if errorlevel 1 exit 1
 
-XCOPY include\* "%LIBRARY_INC%\" /s /e /y
+XCOPY jbrsdk\include\* "%LIBRARY_INC%\" /s /e /y
 if errorlevel 1 exit 1
 
-XCOPY lib\* "%LIBRARY_LIB%\" /s /e /y
+XCOPY jbrsdk\lib\* "%LIBRARY_LIB%\" /s /e /y
 if errorlevel 1 exit 1
 
-XCOPY release %LIBRARY_PREFIX% /s /y /i
+XCOPY jbrsdk\release "%LIBRARY_PREFIX%\" /s /i /y
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\conf\" mkdir %LIBRARY_PREFIX\conf\
-XCOPY conf\* %LIBRARY_PREFIX%\conf\ /s /i /y
+if not exist "%LIBRARY_PREFIX%\conf\" mkdir "%LIBRARY_PREFIX%\conf\"
+XCOPY jbrsdk\conf\* "%LIBRARY_PREFIX%\conf\" /s /i /y
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\jmods\" mkdir %LIBRARY_PREFIX\jmods\
-XCOPY jmods\* %LIBRARY_PREFIX%\jmods\ /s /i /y
+if not exist "%LIBRARY_PREFIX%\jmods\" mkdir "%LIBRARY_PREFIX%\jmods\"
+XCOPY jbrsdk\jmods\* "%LIBRARY_PREFIX%\jmods\" /s /i /y
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\legal\" mkdir %LIBRARY_PREFIX\legal\
-XCOPY legal\* %LIBRARY_PREFIX%\legal\ /s /i /y
+if not exist "%LIBRARY_PREFIX%\legal\" mkdir "%LIBRARY_PREFIX%\legal\"
+XCOPY jbrsdk\legal\* "%LIBRARY_PREFIX%\legal\" /s /i /y
 if errorlevel 1 exit 1
+
+XCOPY jcef\bin\* "%LIBRARY_BIN%\" /s /e /y
+XCOPY jcef\lib\* "%LIBRARY_LIB%\" /s /e /y
+XCOPY jcef\legal\* "%LIBRARY_PREFIX%\legal\" /s /e /y
 
 FOR %%F IN (activate deactivate) DO (
     if not exist %PREFIX%\etc\conda\%%F.d mkdir %PREFIX%\etc\conda\%%F.d
@@ -32,4 +36,3 @@ FOR %%F IN (activate deactivate) DO (
     copy %RECIPE_DIR%\scripts\%%F-win.sh %PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F.sh
     if errorlevel 1 exit 1
 )
-
