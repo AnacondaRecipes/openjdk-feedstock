@@ -23,6 +23,7 @@ source:
 
 build:
   number: 0
+  binary_relocation: False  # [osx and x86_64]
   ignore_run_exports:
     - libstdcxx-ng  # [linux]
   missing_dso_whitelist:
