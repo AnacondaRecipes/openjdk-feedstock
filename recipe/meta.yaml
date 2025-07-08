@@ -1,51 +1,25 @@
-# Based on recipes from birdhouse and anaconda channel.
-
 {% set name = "openjdk" %}
-{% set version = "17.0.14" %}
-{% set intellij_build = "1367.22" %}
+{% set version = "11.0.27" %}
+{% set build = "6" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                       # [osx and not arm64]
-    fn: jbrsdk-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                                                                            # [osx and not arm64]
-    sha256: 751685f5ab56220dcf231a9413cf387b8e451b3f3880657ad07185e5c5406d5a                                                                 # [osx and not arm64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                     # [osx and not arm64]
-    fn: jbr_jcef-{{ version }}-osx-x64-b{{ intellij_build }}.tar.gz                                                                          # [osx and not arm64]
-    sha256: 8a83227052d85f9b9636db53442ef99fa31aebe4feac205e7156221d05a58c72                                                                 # [osx and not arm64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                   # [osx and arm64]
-    fn: jbrsdk-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                        # [osx and arm64]
-    sha256: 324bfbc80603beae1b6328f211ae8f92b22d9cbf37660e655ebb3b9bbb5458b5                                                                 # [osx and arm64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                 # [osx and arm64]
-    fn: jbr_jcef-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [osx and arm64]
-    sha256: c5374e7cc830e71f77a4eb0ce949656bf7d7d0c27b9ebbb90c5df2147cdb730a                                                                 # [osx and arm64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                     # [linux and not aarch64]
-    fn: jbrsdk-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                                                                          # [linux and not aarch64]
-    sha256: 3e17b3597c4a1608d69354864d2441693f63e982d4767a835f12dbdadff196d2                                                                 # [linux and not aarch64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                   # [linux and not aarch64]
-    fn: jbr_jcef-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                                                                        # [linux and not aarch64]
-    sha256: 496e9a8b4bec55741b3f6cf1111ca3fab870aa6a176d62d870629e5c675a199e                                                                 # [linux and not aarch64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                 # [linux and aarch64]
-    fn: jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [linux and aarch64]
-    sha256: 1730f477c65f21a64ed0ee4ec629e72e07656df52650dc0cfbf4e9df9a4799b4                                                                 # [linux and aarch64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz               # [linux and aarch64]
-    fn: jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [linux and aarch64]
-    sha256: 311bdd5ef39718603f0b9050db737aaf01c5f4cbf27dc03292cc0fa78fe9e1a9                                                                 # [linux and aarch64]
-  - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                               # [linux]
-    sha256: 7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a                                                                 # [linux]
-    folder: fonts                                                                                                                            # [linux]
-    # Splitting sources on windows because conda-build is embedding one into another instead of merging them
-    # which results in directory structure like ...\bin\bin\ etc.
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                   # [win64]
-    fn: jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                        # [win64]
-    sha256: 79992161282de814b6a8e0c5005c75a61082783a76935e866e13cf753ab19687                                                                 # [win64]
-    folder: jbrsdk                                                                                                                           # [win64]
-  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                 # [win64]
-    fn: jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                      # [win64]
-    sha256: f653f5932c4f982df315051174b23bc305c51aff1a3593fb9c9ca8f611a9381e                                                                 # [win64]
-    folder: jcef                                                                                                                             # [win64]
+  - url: https://github.com/adoptium/temurin11-binaries/releases/download/jdk-{{ version }}+{{ build }}/OpenJDK11U-jdk_aarch64_mac_hotspot_{{ version }}_{{ build }}.tar.gz    # [osx and arm64]
+    sha256: 780ae402dcd93fea0fee10d02dcd0a0b72cb7298f2ef4dddbad4d54c31a40a4d                                                                                                   # [osx and arm64]
+  - url: https://github.com/adoptium/temurin11-binaries/releases/download/jdk-{{ version }}+{{ build }}/OpenJDK11U-jdk_x64_mac_hotspot_{{ version }}_{{ build }}.tar.gz        # [osx and x86_64]
+    sha256: 805d225d46eab5702bf2f654856d846f426bebf6f143e5f06c8b1397855252e5                                                                                                   # [osx and x86_64]
+  - url: https://github.com/adoptium/temurin11-binaries/releases/download/jdk-{{ version }}+{{ build }}/OpenJDK11U-jdk_aarch64_linux_hotspot_{{ version }}_{{ build }}.tar.gz  # [linux and aarch64]
+    sha256: 4decd2e5caf4667144091cf723458b14148dc990730b3ecb34bba5eb1aa4ad5d                                                                                                   # [linux and aarch64]
+  - url: https://github.com/adoptium/temurin11-binaries/releases/download/jdk-{{ version }}+{{ build }}/OpenJDK11U-jdk_x64_linux_hotspot_{{ version }}_{{ build }}.tar.gz      # [linux and x86_64]
+    sha256: dc6136eaa8c1898cbf8973bb1e203e1f653f4c9166be0f5bebe0b02c5f3b5ae3                                                                                                   # [linux and x86_64]
+  - url: https://github.com/adoptium/temurin11-binaries/releases/download/jdk-{{ version }}+{{ build }}/OpenJDK11U-jdk_x64_windows_hotspot_{{ version }}_{{ build }}.zip       # [win64]
+    sha256: 8503478995c81926db7154e3fbf3fce3ea214b1062c0a3391db52b0798640f5c                                                                                                   # [win64]
+  - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                                                                 # [linux]
+    sha256: 7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a                                                                                                   # [linux]
+    folder: fonts                                                                                                                                                              # [linux]
 
 build:
   number: 0
@@ -96,14 +70,10 @@ requirements:
     # Needed for c/c++ runtime exports
     - {{ compiler('cxx') }}    # [not osx]
   host:
-    - cairo {{ cairo }}        # [linux]
-    - dbus {{ dbus }}          # [linux]
-    - expat {{ expat }}        # [linux]
     - freetype {{ freetype }}  # [linux]
-    - glib {{ glib }}          # [linux]
-    - libxcb 1.15              # [linux]
-    - pango 1.50.7             # [linux]
-    - zlib {{ zlib }}          # [linux]
+    - xorg-libx11              # [linux]
+    - xorg-libxrender          # [linux]
+    - xorg-libxext             # [linux]
 
 test:
   downstreams:
