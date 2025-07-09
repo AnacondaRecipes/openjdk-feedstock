@@ -4,11 +4,6 @@ if [[ $(uname) == Darwin ]]; then
   pushd Contents/Home
 fi
 
-# # jbr tarball for linux-aarch64 contains some x86_64 binaries...
-# if [[ $(uname) == "Linux" && $(uname -m) == "aarch64" ]]; then
-#     find lib -name '*.so' -exec file {} \; | grep -v aarch64 | cut -d: -f1 | xargs rm -v
-# fi
-
 chmod +x bin/*
 [[ -d "${PREFIX}"/bin ]] || mkdir "${PREFIX}"/bin
 [[ -d "${PREFIX}"/lib ]] || mkdir "${PREFIX}"/lib
