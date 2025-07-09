@@ -71,10 +71,10 @@ requirements:
     # Needed for c/c++ runtime exports
     - {{ compiler('cxx') }}    # [not osx]
   host:
-    - freetype {{ freetype }}  # [linux]
-    - xorg-libx11              # [linux]
-    - xorg-libxrender          # [linux]
-    - xorg-libxext             # [linux]
+    - freetype {{ freetype }}                # [linux]
+    - xorg-libx11 {{ xorg_libx11 }}          # [linux]
+    - xorg-libxrender {{ xorg_libxrender }}  # [linux]
+    - xorg-libxext {{ xorg_libxext }}        # [linux]
 
 test:
   downstreams:
