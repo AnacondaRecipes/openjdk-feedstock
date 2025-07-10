@@ -32,29 +32,7 @@ build:
     - $RPATH/libjvm.dylib            # [osx]
     - $RPATH/jvm.dll                 # [win]
     # linux system libs
-    - $RPATH/libnss3.so              # [linux]
-    - $RPATH/libdrm.so.2             # [linux]
-    - $RPATH/libgbm.so.1             # [linux]
-    - $RPATH/libnssutil3.so          # [linux]
-    - $RPATH/libsmime3.so            # [linux]
-    - $RPATH/libnspr4.so             # [linux]
-    - $RPATH/libatk-1.0.so.0         # [linux]
-    - $RPATH/libatk-bridge-2.0.so.0  # [linux]
-    - $RPATH/libxkbcommon.so.0       # [linux]
-    - $RPATH/libX11.so.6             # [linux]
-    - $RPATH/libXcomposite.so.1      # [linux]
-    - $RPATH/libXdamage.so.1         # [linux]
-    - $RPATH/libXext.so.6            # [linux]
-    - $RPATH/libXfixes.so.3          # [linux]
-    - $RPATH/libXrandr.so.2          # [linux]
     - $RPATH/libasound.so.2          # [linux]
-    - $RPATH/libcups.so.2            # [linux]
-    - $RPATH/libatspi.so.0           # [linux]
-    - $RPATH/libXrender.so.1         # [linux]
-    - $RPATH/libXtst.so.6            # [linux]
-    - $RPATH/libXi.so.6              # [linux]
-    - $RPATH/libXxf86vm.so.1         # [linux]
-    - $RPATH/libXcursor.so.1         # [linux]
     # osx-64 system libs
     - /*/*/*/*/*/*/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport             # [osx and x86_64]
     - /System/Library/Frameworks/UniformTypeIdentifiers.framework/Versions/A/UniformTypeIdentifiers  # [osx and x86_64]
@@ -75,6 +53,8 @@ requirements:
     - xorg-libx11 {{ xorg_libx11 }}          # [linux]
     - xorg-libxrender {{ xorg_libxrender }}  # [linux]
     - xorg-libxext {{ xorg_libxext }}        # [linux]
+    - xorg-libxi {{ xorg_libxi }}            # [linux]
+    - xorg-libxtst {{ xorg_libxtst }}        # [linux]
 
 test:
   downstreams:
