@@ -30,14 +30,10 @@ mv jmods/* $PREFIX/jmods
 mkdir -p $PREFIX/legal
 mv legal/* $PREFIX/legal
 
-# 5/26/2021 (PJY): The source files from https://bintray.com/jetbrains/intellij-jbr (which we use) do not have 'man' directories,
-# but the source files from https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/ (used by conda-forge) do
-# have the 'man' directories. Commenting out this section for now. If we switch to the 'AdoptOpenJDK' source, then we should
-# uncomment this section.
-#mkdir -p $PREFIX/man/man1
-#mv man/man1/* $PREFIX/man/man1
-#rm -rf man/man1
-#mv man/* $PREFIX/man
+mkdir -p $PREFIX/man/man1
+mv man/man1/* $PREFIX/man/man1
+rm -rf man/man1
+mv man/* $PREFIX/man
 
 if [[ $(uname) == Linux ]]; then
     # mv $PREFIX/lib/jli/*.so $PREFIX/lib/
@@ -49,7 +45,4 @@ for CHANGE in "activate" "deactivate"
 do
     mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
     cp "${RECIPE_DIR}/scripts/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
-#if [[ $(uname) == Darwin ]]; then
-#  popd
-#fi
 done
