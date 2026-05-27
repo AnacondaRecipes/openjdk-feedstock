@@ -79,6 +79,7 @@ build:
     - $RPATH/libXxf86vm.so.1
     - $RPATH/libXcursor.so.1
     - $RPATH/libstdc++.so.6
+    - $RPATH/libudev.so.1               # [linux]
     - $RPATH/libjvm.dylib               # [osx]
     - $RPATH/libjawt.dylib              # [osx]
     - $RPATH/libpangoft2-1.0.so.0       # [linux and aarch64]
