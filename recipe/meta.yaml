@@ -46,9 +46,6 @@ build:
     - libxcb             # [linux]
     - zlib               # [osx]
     - glib               # [linux]
-    - xorg-libx11        # [linux]
-    - xorg-libxext       # [linux]
-    - xorg-libxrender    # [linux]
   missing_dso_whitelist:
     - $RPATH/libz.so.1
     - $RPATH/libjli.so
@@ -127,7 +124,7 @@ requirements:
     - expat {{ expat }}        # [linux]
     - freetype {{ freetype }}  # [linux]
     - glib {{ glib }}          # [linux]
-    - libxcb {{ libxcb }}      # [linux]
+    - libxcb 1.15              # [linux]
     - pango {{ pango }}        # [linux]
     - zlib {{ zlib }}          # [unix]
   run:
