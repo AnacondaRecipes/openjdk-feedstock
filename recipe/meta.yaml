@@ -124,6 +124,7 @@ requirements:
     - expat {{ expat }}        # [linux]
     - freetype {{ freetype }}  # [linux]
     - glib {{ glib }}          # [linux]
+    # new version of libxcb provoke an overlinking errors
     - libxcb 1.15              # [linux]
     - pango {{ pango }}        # [linux]
     - zlib {{ zlib }}          # [unix]

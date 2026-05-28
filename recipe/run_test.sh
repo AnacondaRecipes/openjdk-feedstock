@@ -65,7 +65,11 @@ case "$(uname -s)" in
         ;;
     Linux)
         lib_ext="so"
-        extra_libs="lib/libawt_headless.$lib_ext lib/libawt_xawt.$lib_ext lib/libjsvml.$lib_ext lib/libmlib_image.$lib_ext lib/libsctp.$lib_ext lib/libsaproc.$lib_ext"
+        extra_libs="lib/libawt_headless.$lib_ext lib/libawt_xawt.$lib_ext lib/libmlib_image.$lib_ext lib/libsctp.$lib_ext lib/libsaproc.$lib_ext"
+        # libjsvml.so exists only on x86_64
+        if [ "$(uname -m)" = "x86_64" ]; then
+            extra_libs="$extra_libs lib/libjsvml.$lib_ext"
+        fi
         ;;
 esac
 
