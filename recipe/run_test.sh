@@ -53,6 +53,10 @@ for f in \
         exit 1
     fi
 done
+
+lib_dir="lib"
+include_dir="include"
+
 echo "Checking libraries..."
 case "$(uname -s)" in
     Darwin)

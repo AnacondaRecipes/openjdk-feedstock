@@ -46,6 +46,9 @@ build:
     - libxcb             # [linux]
     - zlib               # [osx]
     - glib               # [linux]
+    - xorg-libx11        # [linux]
+    - xorg-libxext       # [linux]
+    - xorg-libxrender    # [linux]
   missing_dso_whitelist:
     - $RPATH/libz.so.1
     - $RPATH/libjli.so
