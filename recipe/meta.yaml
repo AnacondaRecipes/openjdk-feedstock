@@ -87,7 +87,7 @@ build:
     - $RPATH/libgdk-x11-2.0.so.0        # [linux and aarch64]
     - $RPATH/libgdk_pixbuf-2.0.so.0     # [linux and aarch64]
     - $RPATH/libgthread-2.0.so.0        # [linux and aarch64]
-    - $RPATH/ld-linux-x86-64.so.2       # [linux and (aarch64 or s390x or ppc64le)]
+    - $RPATH/ld-linux-x86-64.so.2       # [linux and aarch64]
     - $RPATH/libgtk-3.so.0              # [linux and aarch64]
     - $RPATH/libgdk-3.so.0              # [linux and aarch64]
     - $RPATH/libavcodec-ffmpeg.so.56    # [linux and aarch64]
@@ -124,8 +124,8 @@ requirements:
     - expat {{ expat }}        # [linux]
     - freetype {{ freetype }}  # [linux]
     - glib {{ glib }}          # [linux]
-    - libxcb 1.15              # [linux]
-    - pango 1.50.7             # [linux]
+    - libxcb {{ libxcb }}      # [linux]
+    - pango {{ pango }}        # [linux]
     - zlib {{ zlib }}          # [unix]
   run:
     - cairo                    # [linux]
@@ -138,6 +138,7 @@ requirements:
  
 test:
   requires:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
   files:
     - test-jni     # [not win]
