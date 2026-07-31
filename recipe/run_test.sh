@@ -93,7 +93,6 @@ for f in \
     $lib_dir/libjsig.$lib_ext \
     $lib_dir/libjsound.$lib_ext \
     $lib_dir/liblcms.$lib_ext \
-    $lib_dir/lible.$lib_ext \
     $lib_dir/libmanagement.$lib_ext \
     $lib_dir/libmanagement_agent.$lib_ext \
     $lib_dir/libmanagement_ext.$lib_ext \

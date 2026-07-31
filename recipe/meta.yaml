@@ -101,6 +101,7 @@ build:
     - Library\bin\bin\VCRUNTIME140_1.dll  # [win]
     - Library\bin\MSVCP140.dll            # [win]
     - Library\bin\bin\MSVCP140.dll        # [win]
+    - Library\bin\le.dll                  # [win]
     - $RPATH/jvm.dll                      # [win]
     - $RPATH/libcef.dll                   # [win]
     - $RPATH/chrome_elf.dll               # [win]
@@ -163,3 +164,6 @@ extra:
     - johanneskoester
     - mingwandroid
     - sodre
+  skip-lints:
+    - deprecate_license_url
+    - missing_license_file
