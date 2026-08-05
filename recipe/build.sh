@@ -9,9 +9,6 @@ chmod +x bin/*
 [[ -d "${PREFIX}"/lib ]] || mkdir "${PREFIX}"/lib
 [[ -d "${PREFIX}"/include ]] || mkdir "${PREFIX}"/include
 
-echo "DEBUG: check for lible in lib directory"
-ls -la lib/
-
 mv bin/* $PREFIX/bin
 mv include/* $PREFIX/include
 mv lib/* $PREFIX/lib
