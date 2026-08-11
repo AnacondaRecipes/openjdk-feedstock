@@ -73,7 +73,6 @@ for %%f in (
     Library\bin\jsound.dll
     Library\bin\jsvml.dll
     Library\bin\lcms.dll
-    Library\bin\le.dll
     Library\bin\management.dll
     Library\bin\management_agent.dll
     Library\bin\management_ext.dll
