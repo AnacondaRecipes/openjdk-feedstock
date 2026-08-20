@@ -36,9 +36,15 @@ source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                 # [win64]
     fn: jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                      # [win64]
     sha256: cc864687b3ae87030ef3685907ca387b1b216db5cdb27f1cc211dbb9ddb958c6                                                                 # [win64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz               # [win and arm64]
+    fn: jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [win and arm64]
+    sha256: 293e8d537e7eb6e9885dc35af00fc83098817975eb8a0506cd3cf05a054b09e2                                                                 # [win and arm64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz             # [win and arm64]
+    fn: jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                  # [win and arm64]
+    sha256: 65891be43ac23127645db93d6a57ea5ce40df014641fcc3603ee67290f9ad4a3                                                                 # [win and arm64]
 
 build:
-  number: 0
+  number: 1
   ignore_run_exports:
     - dbus               # [linux]
     - expat              # [linux]
