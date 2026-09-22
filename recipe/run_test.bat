@@ -71,7 +71,6 @@ for %%f in (
     Library\bin\jli.dll
     Library\bin\jpackage.dll
     Library\bin\jsound.dll
-    Library\bin\jsvml.dll
     Library\bin\lcms.dll
     Library\bin\management.dll
     Library\bin\management_agent.dll
@@ -92,6 +91,14 @@ for %%f in (
 ) do (
     if not exist "%PREFIX%\%%f" (
         echo MISSING library: %%f
+        exit /b 1
+    )
+)
+
+:: jsvml.dll (Intel SVML) only ships in x64 builds, not win-arm64
+if /i "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+    if not exist "%PREFIX%\Library\bin\jsvml.dll" (
+        echo MISSING library: Library\bin\jsvml.dll
         exit /b 1
     )
 )
