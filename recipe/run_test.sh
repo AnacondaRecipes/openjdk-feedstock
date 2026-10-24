@@ -130,3 +130,25 @@ for f in \
 done
 
 echo "All files present."
+
+echo "Checking trust stores..."
+if [ ! -f "$PREFIX/lib/security/cacerts" ]; then
+    echo "MISSING trust store: lib/security/cacerts"
+    exit 1
+fi
+for cacerts in $(find "$PREFIX/lib" -path '*/security/cacerts'); do
+    # No storepass + EOF on stdin = null password, as the default trust manager loads it; English for stable parsing.
+    listing=$(keytool -J-Duser.language=en -J-Duser.country=US -list -v -keystore "$cacerts" </dev/null)
+    if echo "$listing" | grep -E "^Owner: CN=emSign (ECC Root CA - (G3|C3)|Root CA - (G1|C1)),"; then
+        echo "Distrusted emSign root still present in $cacerts"
+        exit 1
+    fi
+    if ! echo "$listing" | grep -q "^Owner: CN=ISRG Root X1,"; then
+        echo "Trust anchors not readable without a password in $cacerts"
+        exit 1
+    fi
+done
+# 8395142 (CA Enhancements) blocks the compromised eMudhra intermediates; this is
+# EM DV TLS CA - G3B cross-signed by AAA Certificate Services.
+grep -qx 45A883F349AEDFD5F3A649B5498FFB121712BA8B448F3F2A91DBC5A766FCDDBE "$PREFIX/lib/security/blocked.certs"
+echo "Trust stores OK."

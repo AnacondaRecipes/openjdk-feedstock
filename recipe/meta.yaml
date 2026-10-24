@@ -1,8 +1,8 @@
 # Based on recipes from birdhouse and anaconda channel.
 
 {% set name = "openjdk" %}
-{% set version = "25.0.3" %}
-{% set intellij_build = "508.16" %}
+{% set version = "25.0.4.1" %}
+{% set intellij_build = "508.40" %}
 
 package:
   name: {{ name }}
@@ -11,40 +11,40 @@ package:
 source:
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                   # [osx and arm64]
     fn: jbrsdk-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                        # [osx and arm64]
-    sha256: 645c7a27649aa7de7401cc98bdc407f2138472c4c5765cd120260f8e01087cd2                                                                 # [osx and arm64]
+    sha256: 6537a4e98c58cc5c2e2a15c94fcf7579cee630d41bd010aedf606945136fdea4                                                                 # [osx and arm64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                 # [osx and arm64]
     fn: jbr_jcef-{{ version }}-osx-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [osx and arm64]
-    sha256: ccdc2c47a0c384f291532c628b681536f59287a059b586512e1ac17cf476e27c                                                                 # [osx and arm64]    
+    sha256: 7c01d75fe9be54b4e618af084d7b5ab8dcc36a92e67f307c14a1ab158118dcc6                                                                 # [osx and arm64]    
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                     # [linux and not aarch64]
     fn: jbrsdk-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                                                                          # [linux and not aarch64]
-    sha256: 82e653e0e7bfc0f58f68dcae961f83be68e7f74d708bf3a3bc6c43ce959e1e31                                                                 # [linux and not aarch64]
+    sha256: fb6bc1f06d9f6e961a25c89f6e7307424914b4ef1d61109af998b3a93c866d2e                                                                 # [linux and not aarch64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                   # [linux and not aarch64]
     fn: jbr_jcef-{{ version }}-linux-x64-b{{ intellij_build }}.tar.gz                                                                        # [linux and not aarch64]
-    sha256: 236ab4ed978166c1408df6e5f71d603d51063b051fc238c332c182e21ffef45a                                                                 # [linux and not aarch64]
+    sha256: 559c0c68fc60db452b176b2519884c556309a58d1b537f78dec9e5558b4c5683                                                                 # [linux and not aarch64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                 # [linux and aarch64]
     fn: jbrsdk-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                      # [linux and aarch64]
-    sha256: c7dabe4038776a5871fd982a2f0d61816bc63d802ade67f7ad3147608ff9d662                                                                 # [linux and aarch64]
+    sha256: 7bf3bd1c43ad70461c374fe30dde18902f3f58c82dd83ee0d0136bfe575199eb                                                                 # [linux and aarch64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz               # [linux and aarch64]
     fn: jbr_jcef-{{ version }}-linux-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [linux and aarch64]
-    sha256: 65361ff3492db97fb4bdf0dd5dc58769aa890a97fd5709e0e7597626e73d3a01                                                                 # [linux and aarch64]
+    sha256: 8cc2b80c644dc513a770df50b0c2a1194dba36175b895cd5e464ae9186f5d99f                                                                 # [linux and aarch64]
   - url: https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip                               # [linux]
     sha256: 7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a                                                                 # [linux]
     folder: fonts                                                                                                                            # [linux]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                   # [win64]
     fn: jbrsdk-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                        # [win64]
-    sha256: 03403710c5f13e87551c088ed7428c036f77ec32e547a8da03956a9f9362092a                                                                 # [win64]
+    sha256: f75035bdb6ad8ba591fdcb9e4f8122defaf9d93ec83750a394f190fe1ff45dc4                                                                 # [win64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                 # [win64]
     fn: jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                      # [win64]
-    sha256: cc864687b3ae87030ef3685907ca387b1b216db5cdb27f1cc211dbb9ddb958c6                                                                 # [win64]
+    sha256: 379f0611c85d84f41d5f7174a73f56db2d3b27a79fe0a071ea36f4e1d78a1e05                                                                 # [win64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz               # [win and arm64]
     fn: jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [win and arm64]
-    sha256: 293e8d537e7eb6e9885dc35af00fc83098817975eb8a0506cd3cf05a054b09e2                                                                 # [win and arm64]
+    sha256: c59626247ee557247d672a1e2a80934d8efa765047e5ff0049493109cf37a821                                                                 # [win and arm64]
   - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz             # [win and arm64]
     fn: jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                  # [win and arm64]
-    sha256: 65891be43ac23127645db93d6a57ea5ce40df014641fcc3603ee67290f9ad4a3                                                                 # [win and arm64]
+    sha256: fbfb532f4633e4e6f68d7b8c0de3f052fcba4469961f0188d78bb55a0776a406                                                                 # [win and arm64]
 
 build:
-  number: 1
+  number: 0
   ignore_run_exports:
     - dbus               # [linux]
     - expat              # [linux]
