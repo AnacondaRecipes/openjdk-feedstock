@@ -45,6 +45,17 @@ if [[ $(uname) == Linux ]]; then
     mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
 fi
 
+# Distrust eMudhra emSign roots (CA compromise, Oct 2026) in every bundled trust store;
+# the jcef runtime ships a second copy under lib/lib. C1 / ECC C3 are not in JDK cacerts.
+n_cacerts=0
+for cacerts in $(find "${PREFIX}/lib" -path '*/security/cacerts'); do
+    for alias in "emsigneccrootcag3 [jdk]" "emsignrootcag1 [jdk]"; do
+        "${PREFIX}/bin/keytool" -delete -noprompt -storepass changeit -keystore "${cacerts}" -alias "${alias}"
+    done
+    n_cacerts=$((n_cacerts + 1))
+done
+[[ ${n_cacerts} -gt 0 ]] || { echo "No cacerts found under ${PREFIX}/lib" >&2; exit 1; }
+
 for CHANGE in "activate" "deactivate"
 do
     mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"

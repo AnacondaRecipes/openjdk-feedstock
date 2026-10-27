@@ -119,3 +119,26 @@ for %%f in (
 )
 
 echo All files present.
+
+echo Checking trust stores...
+if not exist "%PREFIX%\Library\lib\security\cacerts" (
+    echo MISSING trust store: Library\lib\security\cacerts
+    exit /b 1
+)
+REM No storepass + EOF on stdin = null password, as the default trust manager loads it; English for stable parsing.
+for /f "delims=" %%C in ('dir /s /b "%PREFIX%\Library\lib\cacerts"') do (
+    "%PREFIX%\Library\bin\keytool.exe" -J-Duser.language=en -J-Duser.country=US -list -v -keystore "%%C" <nul > "%TEMP%\cacerts-listing.txt"
+    if errorlevel 1 exit /b 1
+    findstr /b /c:"Owner: CN=emSign ECC Root CA - G3," /c:"Owner: CN=emSign ECC Root CA - C3," /c:"Owner: CN=emSign Root CA - G1," /c:"Owner: CN=emSign Root CA - C1," "%TEMP%\cacerts-listing.txt" && (
+        echo Distrusted emSign root still present in %%C
+        exit /b 1
+    )
+    findstr /b /c:"Owner: CN=ISRG Root X1," "%TEMP%\cacerts-listing.txt" >nul || (
+        echo Trust anchors not readable without a password in %%C
+        exit /b 1
+    )
+)
+REM 8395142 (CA Enhancements) blocks the compromised eMudhra intermediates; this is
+REM EM DV TLS CA - G3B cross-signed by AAA Certificate Services.
+findstr /l /x /c:"45A883F349AEDFD5F3A649B5498FFB121712BA8B448F3F2A91DBC5A766FCDDBE" "%PREFIX%\Library\lib\security\blocked.certs" >nul || exit /b 1
+echo Trust stores OK.
