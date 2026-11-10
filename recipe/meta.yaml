@@ -46,9 +46,17 @@ source:
     fn: jbr_jcef-{{ version }}-windows-x64-b{{ intellij_build }}.tar.gz                                                                      # [win64]
     sha256: f653f5932c4f982df315051174b23bc305c51aff1a3593fb9c9ca8f611a9381e                                                                 # [win64]
     folder: jcef                                                                                                                             # [win64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz               # [win and arm64]
+    fn: jbrsdk-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                    # [win and arm64]
+    sha256: 4475eea2480260832f730169470e28bc675b5288c6acfd47cf431b84bd06d757                                                                 # [win and arm64]
+    folder: jbrsdk                                                                                                                           # [win and arm64]
+  - url: https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz             # [win and arm64]
+    fn: jbr_jcef-{{ version }}-windows-aarch64-b{{ intellij_build }}.tar.gz                                                                  # [win and arm64]
+    sha256: 1f705a6510bcbf44ac4966af485f823703ee285472a7fa2ffb8b028ee383418f                                                                 # [win and arm64]
+    folder: jcef                                                                                                                             # [win and arm64]
 
 build:
-  number: 0
+  number: 1
   ignore_run_exports:
     - libstdcxx-ng  # [linux]
   missing_dso_whitelist:
