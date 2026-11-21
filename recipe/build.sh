@@ -28,7 +28,8 @@ mkdir -p $PREFIX/jmods
 mv jmods/* $PREFIX/jmods
 
 mkdir -p $PREFIX/legal
-mv legal/* $PREFIX/legal
+# Copy, not move: about.license_file reads legal/java.base/* from the work dir.
+cp -R legal/* $PREFIX/legal
 
 # 5/26/2021 (PJY): The source files from https://bintray.com/jetbrains/intellij-jbr (which we use) do not have 'man' directories,
 # but the source files from https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/ (used by conda-forge) do
@@ -41,20 +42,9 @@ mv legal/* $PREFIX/legal
 
 if [[ $(uname) == Linux ]]; then
     # mv $PREFIX/lib/jli/*.so $PREFIX/lib/
-    mkdir -p %PREFIX/lib/fonts
+    mkdir -p "$PREFIX/lib/fonts"
     mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
 fi
-
-# Distrust eMudhra emSign roots (CA compromise, Oct 2026) in every bundled trust store;
-# the jcef runtime ships a second copy under lib/lib. C1 / ECC C3 are not in JDK cacerts.
-n_cacerts=0
-for cacerts in $(find "${PREFIX}/lib" -path '*/security/cacerts'); do
-    for alias in "emsigneccrootcag3 [jdk]" "emsignrootcag1 [jdk]"; do
-        "${PREFIX}/bin/keytool" -delete -noprompt -storepass changeit -keystore "${cacerts}" -alias "${alias}"
-    done
-    n_cacerts=$((n_cacerts + 1))
-done
-[[ ${n_cacerts} -gt 0 ]] || { echo "No cacerts found under ${PREFIX}/lib" >&2; exit 1; }
 
 for CHANGE in "activate" "deactivate"
 do
