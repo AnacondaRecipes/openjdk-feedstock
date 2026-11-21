@@ -139,8 +139,9 @@ fi
 for cacerts in $(find "$PREFIX/lib" -path '*/security/cacerts'); do
     # No storepass + EOF on stdin = null password, as the default trust manager loads it; English for stable parsing.
     listing=$(keytool -J-Duser.language=en -J-Duser.country=US -list -v -keystore "$cacerts" </dev/null)
-    if echo "$listing" | grep -E "^Owner: CN=emSign (ECC Root CA - (G3|C3)|Root CA - (G1|C1)),"; then
-        echo "Distrusted emSign root still present in $cacerts"
+    # Roots removed upstream by 8395690 (25.0.5.0.3) plus the eMudhra C1/C3 roots.
+    if echo "$listing" | grep -E "^Owner: CN=(emSign (ECC Root CA - (G3|C3)|Root CA - (G1|G2|C1))|AAA Certificate Services),"; then
+        echo "Distrusted root still present in $cacerts"
         exit 1
     fi
     if ! echo "$listing" | grep -q "^Owner: CN=ISRG Root X1,"; then
@@ -149,6 +150,29 @@ for cacerts in $(find "$PREFIX/lib" -path '*/security/cacerts'); do
     fi
 done
 # 8395142 (CA Enhancements) blocks the compromised eMudhra intermediates; this is
-# EM DV TLS CA - G3B cross-signed by AAA Certificate Services.
-grep -qx 45A883F349AEDFD5F3A649B5498FFB121712BA8B448F3F2A91DBC5A766FCDDBE "$PREFIX/lib/security/blocked.certs"
+# EM DV TLS CA - G3B cross-signed by AAA Certificate Services. Check every packaged runtime.
+test -f "$PREFIX/lib/security/blocked.certs"
+for blocked in $(find "$PREFIX/lib" -path '*/security/blocked.certs'); do
+    grep -qx 45A883F349AEDFD5F3A649B5498FFB121712BA8B448F3F2A91DBC5A766FCDDBE "$blocked" || {
+        echo "Compromised eMudhra intermediate not blocked in $blocked"
+        exit 1
+    }
+done
 echo "Trust stores OK."
+
+if [ "$(uname -s)" = "Linux" ]; then
+    echo "Checking Java Sound links the env's libasound..."
+    ldd "$PREFIX/lib/libjsound.so" | grep "libasound.so.2" | grep -q "$PREFIX/lib/" || {
+        echo "libjsound.so does not resolve libasound.so.2 from $PREFIX/lib"
+        exit 1
+    }
+    cat > "${TMPDIR:-/tmp}/LoadJsound.java" <<'EOF'
+public class LoadJsound {
+    public static void main(String[] args) {
+        System.load(System.getProperty("java.home") + "/lib/libjsound.so");
+        System.out.println("libjsound loaded");
+    }
+}
+EOF
+    java "${TMPDIR:-/tmp}/LoadJsound.java"
+fi

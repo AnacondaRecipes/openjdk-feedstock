@@ -5,15 +5,15 @@ Robocopy.exe /MOVE /S /E lib\ "%LIBRARY_LIB%"
 XCOPY release %LIBRARY_PREFIX% /s /y /i
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\conf\" mkdir %LIBRARY_PREFIX\conf\
+if not exist "%LIBRARY_PREFIX%\conf\" mkdir "%LIBRARY_PREFIX%\conf\"
 XCOPY conf\* %LIBRARY_PREFIX%\conf\ /s /i /y
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\jmods\" mkdir %LIBRARY_PREFIX\jmods\
+if not exist "%LIBRARY_PREFIX%\jmods\" mkdir "%LIBRARY_PREFIX%\jmods\"
 XCOPY jmods\* %LIBRARY_PREFIX%\jmods\ /s /i /y
 if errorlevel 1 exit 1
 
-if not exist "%LIBRARY_PREFIX%\legal\" mkdir %LIBRARY_PREFIX\legal\
+if not exist "%LIBRARY_PREFIX%\legal\" mkdir "%LIBRARY_PREFIX%\legal\"
 XCOPY legal\* %LIBRARY_PREFIX%\legal\ /s /i /y
 if errorlevel 1 exit 1
 

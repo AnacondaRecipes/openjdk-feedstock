@@ -52,6 +52,9 @@ build:
     - libxcb             # [linux]
     - zlib               # [osx]
     - glib               # [linux]
+    # No shipped ELF links libstdc++.so.6 (JBR links libstdc++ statically).
+    - libstdcxx          # [linux]
+  # Host-OS desktop libraries loaded by JCEF (lib/lib/libcef.so) and AWT/X11; not shipped by this package.
   missing_dso_whitelist:
     - $RPATH/libz.so.1
     - $RPATH/libjli.so
@@ -74,7 +77,6 @@ build:
     - $RPATH/libXext.so.6
     - $RPATH/libXfixes.so.3
     - $RPATH/libXrandr.so.2
-    - $RPATH/libasound.so.2
     - $RPATH/libcups.so.2
     - $RPATH/libatspi.so.0
     - $RPATH/libxshmfence.so.1
@@ -84,7 +86,6 @@ build:
     - $RPATH/libXi.so.6
     - $RPATH/libXxf86vm.so.1
     - $RPATH/libXcursor.so.1
-    - $RPATH/libstdc++.so.6
     - $RPATH/libudev.so.1               # [linux]
     - $RPATH/libjvm.dylib               # [osx]
     - $RPATH/libjawt.dylib              # [osx]
@@ -125,6 +126,8 @@ requirements:
     - {{ compiler('cxx') }}
     - zip                      # [linux]
   host:
+    # libjsound.so (Java Sound) needs libasound.so.2; the weak run_export adds the run dep
+    - alsa-lib {{ alsa_lib }}  # [linux]
     - cairo {{ cairo }}        # [linux]
     - dbus {{ dbus }}          # [linux]
     - expat {{ expat }}        # [linux]
@@ -154,21 +157,25 @@ test:
 
 about:
   home: https://github.com/JetBrains/JetBrainsRuntime
-  license: GPL-2.0-only
+  license: GPL-2.0-only WITH Classpath-exception-2.0
   license_family: GPL
-  license_url: "https://raw.githubusercontent.com/JetBrains/JetBrainsRuntime/refs/tags/jdk-21+35/LICENSE"
+  license_file:
+    - legal/java.base/LICENSE                                # [not osx]
+    - legal/java.base/ASSEMBLY_EXCEPTION                     # [not osx]
+    - legal/java.base/ADDITIONAL_LICENSE_INFO                # [not osx]
+    - Contents/Home/legal/java.base/LICENSE                  # [osx]
+    - Contents/Home/legal/java.base/ASSEMBLY_EXCEPTION       # [osx]
+    - Contents/Home/legal/java.base/ADDITIONAL_LICENSE_INFO  # [osx]
+    - fonts/LICENSE                                          # [linux]
   summary: The JetBrains Runtime OpenJDK build.
   description: |
     JetBrains Runtime is a runtime environment for running
     IntelliJ Platform based products on Windows, Mac OS X, and Linux
   dev_url: https://github.com/JetBrains/JetBrainsRuntime
-  doc_url: https://openjdk.org/guide/
+  doc_url: https://github.com/JetBrains/JetBrainsRuntime/wiki
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - mingwandroid
     - sodre
-  skip-lints:
-    - deprecate_license_url
-    - missing_license_file

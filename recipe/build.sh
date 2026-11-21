@@ -28,7 +28,8 @@ mkdir -p $PREFIX/jmods
 mv jmods/* $PREFIX/jmods
 
 mkdir -p $PREFIX/legal
-mv legal/* $PREFIX/legal
+# Copy, not move: about.license_file reads legal/java.base/* from the work dir.
+cp -R legal/* $PREFIX/legal
 
 # 5/26/2021 (PJY): The source files from https://bintray.com/jetbrains/intellij-jbr (which we use) do not have 'man' directories,
 # but the source files from https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/ (used by conda-forge) do
@@ -41,7 +42,7 @@ mv legal/* $PREFIX/legal
 
 if [[ $(uname) == Linux ]]; then
     # mv $PREFIX/lib/jli/*.so $PREFIX/lib/
-    mkdir -p %PREFIX/lib/fonts
+    mkdir -p "$PREFIX/lib/fonts"
     mv $SRC_DIR/fonts/ttf/* $PREFIX/lib/fonts/
 fi
 
